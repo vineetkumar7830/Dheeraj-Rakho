@@ -9,6 +9,7 @@ import { DashboardModule } from './create/dashboard/dashboard.module';
 import { EnquiryModule } from './enquiry/enquiry.module';
 import { PartnershipModule } from './partnership/partnership.module';
 import { LoginpageModule } from './loginpage/loginpage.module';
+import { ConfigModule } from '@nestjs/config';
 
 
 
@@ -17,6 +18,9 @@ import { LoginpageModule } from './loginpage/loginpage.module';
   imports: [
     MongooseModule.forRoot('mongodb+srv://rs5045280:xbpneTRReMJD9LAc@cluster0.sbbouj5.mongodb.net/nest-blog?retryWrites=true&w=majority', {
       serverSelectionTimeoutMS: 4000,
+    }),
+    ConfigModule.forRoot({
+      isGlobal: true, // makes env available everywhere
     }),
     CountingblogModule,
     AddcommentModule,

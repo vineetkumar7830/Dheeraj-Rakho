@@ -11,7 +11,7 @@ export class CountingblogService {
   ) {}
 
   private addImageURL(blog: any) {
-    const baseURL = 'http://localhost:3000/uploads/';
+    const baseURL = process.env.SERVER_BASE_URL;
     if (blog.featured_image && !blog.featured_image.startsWith('http')) {
       blog.featured_image = baseURL + blog.featured_image;
     }

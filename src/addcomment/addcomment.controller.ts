@@ -16,7 +16,6 @@ import { UpdateAddcommentDto } from './dto/update-addcomment.dto';
 export class AddcommentController {
   constructor(private readonly addcommentService: AddcommentService) {}
 
-  // 🟢 Add a new comment to a blog
   @Post()
   async create(@Body() dto: CreateAddcommentDto) {
     if (!dto.blogId || !dto.author || !dto.content) {
@@ -27,7 +26,6 @@ export class AddcommentController {
     return this.addcommentService.create(dto);
   }
 
-  // 🟢 Add reply using only commentId
   @Post('reply/:commentId')
   async addReply(
     @Param('commentId') commentId: string,
@@ -40,13 +38,11 @@ export class AddcommentController {
     return this.addcommentService.addReply(commentId, author, content);
   }
 
-  // 🟢 Get all comments (with replies) of a blog
   @Get(':blogId')
   async findAll(@Param('blogId') blogId: string) {
     return this.addcommentService.findAll(blogId);
   }
 
-  // 🟡 Update a comment
   @Patch()
   async update(@Body() dto: UpdateAddcommentDto) {
     if (!dto.blogId || !dto.commentId || !dto.content) {
@@ -57,7 +53,6 @@ export class AddcommentController {
     return this.addcommentService.update(dto);
   }
 
-  // 🔴 Delete a comment
   @Delete(':blogId/:commentId')
   async remove(
     @Param('blogId') blogId: string,

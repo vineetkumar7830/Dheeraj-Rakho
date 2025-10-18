@@ -45,7 +45,7 @@ export class CountingblogController {
     @Body() createDto: CreateCountingblogDto,
   ) {
     if (featured_image) {
-      createDto.featured_image = `http://192.168.0.112:3000/uploads/${featured_image.filename}`;
+      createDto.featured_image = `${process.env.SERVER_BASE_URL}/uploads/${featured_image.filename}`;
     }
     return this.blogService.create(createDto);
   }

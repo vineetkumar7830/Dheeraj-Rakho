@@ -18,7 +18,6 @@ export class CountingBlog extends Document {
   @Prop()
   content: string;
 
-  // ✅ Comment Schema
   @Prop({
     type: [
       {
